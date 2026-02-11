@@ -1,21 +1,20 @@
-const form = document.querySelector(".login-form");
+const form = document.getElementById("loginForm");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  // Example animation on submit
-  form.style.animation = "shake 0.4s ease";
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-  setTimeout(() => {
-    form.style.animation = "";
-    alert("Logged In Successfully!");
-    // You can redirect after login:
-    // window.location.href = "calculator.html";
-  }, 400);
+    // Simple demo validation
+    if (username === "admin" && password === "1234") {
+        alert("Login Successful!");
+        // Redirect example:
+        // window.location.href = "calculator.html";
+    } else {
+        form.style.animation = "shake 0.3s";
+        setTimeout(() => {
+            form.style.animation = "";
+        }, 300);
+    }
 });
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-10px); }
-  40%, 80% { transform: translateX(10px); }
-}
